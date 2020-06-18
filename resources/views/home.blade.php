@@ -77,9 +77,14 @@
                         <li class="list-group-item">
                             <b>Produk:</b> {{ $order->product->nama }}<br>
                             <b>Pengirim:</b> {{ $order->courir->user->name }}<br>
-                            <b>Alamat:</b> {{ $order->address->address }}
+                            <b>Alamat:</b> {{ $order->address->address ?? "Halaman dihapus" }}
+                            @if($order->address)
                             <a href="{{ url('transaksi/' . $order->id) }}" class="btn-block btn btn-sm btn-primary"><i
                                     class="fas fa-search mr-1"></i> Detail</a>
+                            @else
+                            <button class="btn-block btn btn-sm btn-primary" disabled><i
+                                class="fas fa-search mr-1"></i> Detail</button>
+                            @endif
                         </li>
                         @endforeach
                         @endif
@@ -101,9 +106,14 @@
                         <li class="list-group-item">
                             <b>Produk:</b> {{ $order->product->nama }}<br>
                             <b>Pelanggan:</b> {{ $order->user->name }}<br>
-                            <b>Alamat:</b> {{ $order->address->address }}
+                            <b>Alamat:</b> {{ $order->address->address ?? 'Alamat dihapus' }}
+                            @if($order->address)
                             <a href="{{ url('transaksi/' . $order->id) }}" class="btn-block btn btn-sm btn-primary"><i
                                     class="fas fa-search mr-1"></i> Detail</a>
+                            @else
+                            <button class="btn-block btn btn-sm btn-primary" disabled><i
+                                class="fas fa-search mr-1"></i> Detail</button>
+                            @endif
                         </li>
                         @endforeach
                         @endif
